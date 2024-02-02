@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_02_041348) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_02_153238) do
   create_table "account_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -61,11 +61,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_02_041348) do
     t.decimal "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date"
     t.index ["account_id"], name: "index_debts_on_account_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string "label"
+    t.integer "debt_id", null: false
+    t.decimal "amount"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["debt_id"], name: "index_transactions_on_debt_id"
   end
 
   add_foreign_key "accounts", "account_types", on_delete: :cascade
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "debts", "accounts"
+  add_foreign_key "transactions", "debts"
 end

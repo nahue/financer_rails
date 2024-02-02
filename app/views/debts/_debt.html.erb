@@ -1,26 +1,36 @@
 <div id="<%= dom_id debt %>">
   <p class="my-5">
-    <strong class="block font-medium mb-1">Label:</strong>
+    <strong class="block font-medium mb-1">Descripcion:</strong>
     <%= debt.label %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Account:</strong>
-    <%= debt.account_id %>
+    <strong class="block font-medium mb-1">Fecha:</strong>
+    <%= debt.date %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Currency:</strong>
+    <strong class="block font-medium mb-1">Cuenta:</strong>
+    <%= debt.account.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Moneda:</strong>
     <%= debt.currency %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Amount:</strong>
-    <%= debt.amount %>
+    <strong class="block font-medium mb-1">Valor:</strong>
+    <%= number_to_currency(debt.amount) %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Invoice:</strong>
+    <strong class="block font-medium mb-1">Saldo deudor:</strong>
+    <%= number_to_currency(debt.owe) %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Documento:</strong>
     <%= link_to debt.invoice.filename, debt.invoice if debt.invoice.attached? %>
   </p>
 
