@@ -18,7 +18,7 @@
 
   <div class="my-5">
     <%= form.label :account_type %>
-    <%= form.collection_select :account_type_id, AccountType.order(:name), :id, :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.collection_select :account_type_id, AccountType.order(:name), :id, :name, {prompt: "Select an Account Type"}, {class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"} %>
   </div>
 
   <div class="inline">
