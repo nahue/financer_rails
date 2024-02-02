@@ -1,32 +1,32 @@
 <div id="<%= dom_id transaction %>">
   <p class="my-5">
-    <strong class="block font-medium mb-1">Label:</strong>
+    <strong class="block font-medium mb-1">Descripcion:</strong>
     <%= transaction.label %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Debt:</strong>
-    <%= transaction.debt_id %>
+    <strong class="block font-medium mb-1">Deuda:</strong>
+    <%= link_to transaction.debt.label, debt_path(transaction.debt_id), class: "font-bold text-indigo-500"  %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Amount:</strong>
+    <strong class="block font-medium mb-1">Monto:</strong>
     <%= number_to_currency(transaction.amount) %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Date:</strong>
+    <strong class="block font-medium mb-1">Fecha:</strong>
     <%= transaction.date %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Document:</strong>
+    <strong class="block font-medium mb-1">Documento:</strong>
     <%= link_to transaction.document.filename, transaction.document if transaction.document.attached? %>
   </p>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this transaction", transaction, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this transaction", edit_transaction_path(transaction), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Mostrar", transaction, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Editar", edit_transaction_path(transaction), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>
