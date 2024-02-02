@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :debts
   resources :account_types
   resources :accounts
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

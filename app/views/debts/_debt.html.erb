@@ -1,0 +1,32 @@
+<div id="<%= dom_id debt %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Label:</strong>
+    <%= debt.label %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Account:</strong>
+    <%= debt.account_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Currency:</strong>
+    <%= debt.currency %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Amount:</strong>
+    <%= debt.amount %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Invoice:</strong>
+    <%= link_to debt.invoice.filename, debt.invoice if debt.invoice.attached? %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this debt", debt, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this debt", edit_debt_path(debt), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
